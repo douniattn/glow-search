@@ -4,7 +4,7 @@
  */
 
 // ⚡ Paste your Google Apps Script Web App URL here (see SETUP_GOOGLE_SHEETS.md)
-const GOOGLE_SHEET_URL = "";
+const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbzoGqelNbHwNP_t_YtIWaUpXWkKaFtOZvfpaPn3OowGyfEoC2jI_k_oGd_eKb0enWrG/exec";
 
 document.addEventListener("DOMContentLoaded", () => {
   // ---- Tab Navigation ----
