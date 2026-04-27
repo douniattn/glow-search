@@ -466,8 +466,8 @@ document.addEventListener("DOMContentLoaded", () => {
     fetch(GOOGLE_SHEET_URL, {
       method: "POST",
       mode: "no-cors",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(payload).toString(),
     })
       .then(() => console.log("✅ Form submitted to Google Sheets"))
       .catch((err) => console.error("❌ Google Sheets submission error:", err));
