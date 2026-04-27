@@ -463,13 +463,37 @@ document.addEventListener("DOMContentLoaded", () => {
       message: profile.message,
     };
 
-    fetch(GOOGLE_SHEET_URL, {
-      method: "POST",
-      mode: "no-cors",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(payload).toString(),
-    })
-      .then(() => console.log("✅ Form submitted to Google Sheets"))
-      .catch((err) => console.error("❌ Google Sheets submission error:", err));
+    // Use a hidden form + iframe to avoid CORS issues entirely
+    try {
+      let iframe = document.getElementById("glow-hidden-iframe");
+      if (!iframe) {
+        iframe = document.createElement("iframe");
+        iframe.id = "glow-hidden-iframe";
+        iframe.name = "glow-hidden-iframe";
+        iframe.style.display = "none";
+        document.body.appendChild(iframe);
+      }
+
+      const form = document.createElement("form");
+      form.method = "POST";
+      form.action = GOOGLE_SHEET_URL;
+      form.target = "glow-hidden-iframe";
+      form.style.display = "none";
+
+      for (const [key, value] of Object.entries(payload)) {
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = key;
+        input.value = value;
+        form.appendChild(input);
+      }
+
+      document.body.appendChild(form);
+      form.submit();
+      form.remove();
+      console.log("✅ Form submitted to Google Sheets");
+    } catch (err) {
+      console.error("❌ Google Sheets submission error:", err);
+    }
   }
 });
