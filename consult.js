@@ -3,6 +3,9 @@
  * AI-driven consultation logic with chat interface
  */
 
+// ⚡ Paste your Google Apps Script Web App URL here (see SETUP_GOOGLE_SHEETS.md)
+const GOOGLE_SHEET_URL = "";
+
 document.addEventListener("DOMContentLoaded", () => {
   // ---- Tab Navigation ----
   const tabBtns = document.querySelectorAll(".tab-btn");
@@ -120,6 +123,9 @@ document.addEventListener("DOMContentLoaded", () => {
       message: document.getElementById("userMessage").value.trim(),
       plan: selectedPlan,
     };
+
+    // Send to Google Sheets
+    submitToGoogleSheets(userProfile);
 
     intakeSection.style.display = "none";
     chatSection.style.display = "block";
@@ -435,5 +441,35 @@ document.addEventListener("DOMContentLoaded", () => {
       anything: "Open to all treatments",
     };
     return labels[value] || value;
+  }
+
+  // ---- Google Sheets Integration ----
+  function submitToGoogleSheets(profile) {
+    if (!GOOGLE_SHEET_URL) {
+      console.log("Google Sheets URL not configured — form data logged locally:", profile);
+      return;
+    }
+
+    const payload = {
+      timestamp: new Date().toISOString(),
+      plan: profile.plan,
+      name: profile.name,
+      age: profile.age,
+      budget: profile.budget,
+      location: profile.location,
+      skinType: profile.skinType,
+      concerns: profile.concerns.join(", "),
+      procedureOpenness: formatProcedure(profile.procedureOpenness),
+      message: profile.message,
+    };
+
+    fetch(GOOGLE_SHEET_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    })
+      .then(() => console.log("✅ Form submitted to Google Sheets"))
+      .catch((err) => console.error("❌ Google Sheets submission error:", err));
   }
 });
