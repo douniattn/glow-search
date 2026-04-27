@@ -25,11 +25,20 @@
         <span class="logo-icon">✨</span>
         <span class="logo-text">Glow</span>
       </div>
-      <p class="tagline">Your beauty questions, answered with care</p>
+      <nav class="tab-nav">
+        <button class="tab-btn active" data-tab="search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          Search
+        </button>
+        <button class="tab-btn" data-tab="consult">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          Consult a Specialist
+        </button>
+      </nav>
     </header>
 
-    <!-- Hero Section -->
-    <main class="main">
+    <!-- ====== SEARCH TAB ====== -->
+    <main class="main" id="tabSearch">
       <section class="hero" id="hero">
         <h1 class="hero-title">
           Hey gorgeous,<br />
@@ -99,6 +108,232 @@
       </section>
     </main>
 
+    <!-- ====== CONSULT TAB ====== -->
+    <main class="main consult-main" id="tabConsult" style="display: none;">
+
+      <!-- Consult Hero -->
+      <section class="consult-hero" id="consultHero">
+        <h1 class="hero-title">
+          Your skin is unique.<br/>
+          <span class="highlight">Get a plan made for you.</span>
+        </h1>
+        <p class="hero-subtitle">
+          AI-powered analysis meets real human expertise. Tell us about yourself and your goals — we'll match you with the perfect beauty plan and a specialist who gets you.
+        </p>
+
+        <!-- How it works -->
+        <div class="how-it-works">
+          <div class="step-card">
+            <span class="step-num">1</span>
+            <span class="step-icon">📝</span>
+            <h3>Share your profile</h3>
+            <p>Age, skin concerns, budget, location — so we can personalise everything.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-num">2</span>
+            <span class="step-icon">🤖</span>
+            <h3>AI builds your plan</h3>
+            <p>Our AI analyses thousands of treatments to find the best options for you.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-num">3</span>
+            <span class="step-icon">👩‍⚕️</span>
+            <h3>Expert reviews it</h3>
+            <p>A certified specialist fine-tunes your plan and answers your questions live.</p>
+          </div>
+        </div>
+
+        <!-- Plans -->
+        <h2 class="plans-title">Choose your plan</h2>
+        <div class="plans-grid">
+
+          <!-- Free -->
+          <div class="plan-card">
+            <div class="plan-header">
+              <span class="plan-emoji">🌱</span>
+              <h3 class="plan-name">Glow Starter</h3>
+              <p class="plan-price">Free</p>
+            </div>
+            <ul class="plan-features">
+              <li><span class="check">✓</span> AI skin analysis</li>
+              <li><span class="check">✓</span> Personalized skincare routine</li>
+              <li><span class="check">✓</span> Product recommendations</li>
+              <li><span class="check">✓</span> Budget-friendly options</li>
+              <li class="muted"><span class="cross">—</span> Live specialist chat</li>
+              <li class="muted"><span class="cross">—</span> Procedure guidance</li>
+            </ul>
+            <button class="plan-btn plan-btn-outline" data-plan="starter">Get Started</button>
+          </div>
+
+          <!-- Pro -->
+          <div class="plan-card plan-featured">
+            <div class="plan-badge-top">Most Popular</div>
+            <div class="plan-header">
+              <span class="plan-emoji">✨</span>
+              <h3 class="plan-name">Glow Pro</h3>
+              <p class="plan-price">$29<span class="plan-period">/session</span></p>
+            </div>
+            <ul class="plan-features">
+              <li><span class="check">✓</span> Everything in Starter</li>
+              <li><span class="check">✓</span> 30-min specialist video call</li>
+              <li><span class="check">✓</span> Treatment plan with cost breakdown</li>
+              <li><span class="check">✓</span> Clinic & doctor recommendations</li>
+              <li><span class="check">✓</span> Procedure pros / cons analysis</li>
+              <li><span class="check">✓</span> Follow-up chat for 7 days</li>
+            </ul>
+            <button class="plan-btn plan-btn-fill" data-plan="pro">Book a Session</button>
+          </div>
+
+          <!-- VIP -->
+          <div class="plan-card">
+            <div class="plan-header">
+              <span class="plan-emoji">💎</span>
+              <h3 class="plan-name">Glow VIP</h3>
+              <p class="plan-price">$79<span class="plan-period">/month</span></p>
+            </div>
+            <ul class="plan-features">
+              <li><span class="check">✓</span> Everything in Pro</li>
+              <li><span class="check">✓</span> Unlimited specialist chats</li>
+              <li><span class="check">✓</span> Ongoing routine adjustments</li>
+              <li><span class="check">✓</span> Exclusive clinic deals near you</li>
+              <li><span class="check">✓</span> Progress tracking & check-ins</li>
+              <li><span class="check">✓</span> Priority booking assistance</li>
+            </ul>
+            <button class="plan-btn plan-btn-outline" data-plan="vip">Go VIP</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Intake Form (shown after picking plan) -->
+      <section class="intake-section" id="intakeSection" style="display:none;">
+        <button class="back-btn" id="intakeBackBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span>Back to plans</span>
+        </button>
+
+        <div class="intake-card">
+          <div class="intake-header">
+            <span class="intake-icon">🪄</span>
+            <h2>Tell us about you</h2>
+            <p>The more we know, the better we can help. Everything stays private.</p>
+          </div>
+
+          <form id="intakeForm" class="intake-form">
+            <div class="form-group">
+              <label for="userName">First name</label>
+              <input type="text" id="userName" placeholder="e.g. Sarah" required />
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="userAge">Age</label>
+                <select id="userAge" required>
+                  <option value="" disabled selected>Select</option>
+                  <option>18-24</option>
+                  <option>25-29</option>
+                  <option>30-35</option>
+                  <option>36-40</option>
+                  <option>40+</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="userBudget">Monthly beauty budget</label>
+                <select id="userBudget" required>
+                  <option value="" disabled selected>Select</option>
+                  <option>Under $50</option>
+                  <option>$50 – $150</option>
+                  <option>$150 – $300</option>
+                  <option>$300 – $500</option>
+                  <option>$500+</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="userLocation">City or area</label>
+              <input type="text" id="userLocation" placeholder="e.g. Paris, New York, London…" required />
+            </div>
+
+            <div class="form-group">
+              <label for="userSkinType">Skin type</label>
+              <div class="chip-group" id="skinTypeChips">
+                <button type="button" class="chip" data-value="oily">Oily</button>
+                <button type="button" class="chip" data-value="dry">Dry</button>
+                <button type="button" class="chip" data-value="combo">Combination</button>
+                <button type="button" class="chip" data-value="sensitive">Sensitive</button>
+                <button type="button" class="chip" data-value="normal">Normal</button>
+                <button type="button" class="chip" data-value="unsure">Not sure</button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="userConcerns">Main concerns <span class="label-hint">(pick all that apply)</span></label>
+              <div class="chip-group" id="concernChips">
+                <button type="button" class="chip" data-value="acne">Acne</button>
+                <button type="button" class="chip" data-value="aging">Fine lines / aging</button>
+                <button type="button" class="chip" data-value="pigmentation">Dark spots</button>
+                <button type="button" class="chip" data-value="texture">Texture / scars</button>
+                <button type="button" class="chip" data-value="redness">Redness</button>
+                <button type="button" class="chip" data-value="hydration">Dryness / hydration</button>
+                <button type="button" class="chip" data-value="pores">Pores</button>
+                <button type="button" class="chip" data-value="dark-circles">Dark circles</button>
+                <button type="button" class="chip" data-value="glow">I just want to glow!</button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="userOpenTo">Open to procedures?</label>
+              <div class="chip-group" id="procedureChips">
+                <button type="button" class="chip" data-value="skincare-only">Skincare only</button>
+                <button type="button" class="chip" data-value="mild">Mild (facials, peels)</button>
+                <button type="button" class="chip" data-value="open">Open to injectables</button>
+                <button type="button" class="chip" data-value="anything">Open to anything</button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="userMessage">Anything else you'd like us to know?</label>
+              <textarea id="userMessage" rows="3" placeholder="e.g. I've tried retinol before but it irritated my skin…"></textarea>
+            </div>
+
+            <button type="submit" class="plan-btn plan-btn-fill submit-btn" id="intakeSubmit">
+              <span>✨ Get My Personalized Plan</span>
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <!-- Chat / Results (shown after form) -->
+      <section class="chat-section" id="chatSection" style="display:none;">
+        <button class="back-btn" id="chatBackBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span>Start over</span>
+        </button>
+
+        <div class="chat-container">
+          <div class="chat-header">
+            <div class="chat-avatar">👩‍⚕️</div>
+            <div>
+              <h3 class="chat-specialist-name">Glow AI Specialist</h3>
+              <span class="chat-status"><span class="status-dot"></span> Online — analyzing your profile</span>
+            </div>
+          </div>
+
+          <div class="chat-messages" id="chatMessages">
+            <!-- messages rendered here -->
+          </div>
+
+          <div class="chat-input-bar">
+            <input type="text" id="chatInput" class="chat-input" placeholder="Ask a follow-up question…" />
+            <button id="chatSendBtn" class="chat-send-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
     <!-- Footer -->
     <footer class="footer">
       <p>Made with 💕 — Glow is for informational purposes only. Always consult a dermatologist for personalized advice.</p>
@@ -107,5 +342,6 @@
 
   <script src="knowledge.js"></script>
   <script src="app.js"></script>
+  <script src="consult.js"></script>
 </body>
 </html>
