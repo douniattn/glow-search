@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Glow — Your Beauty Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✨</text></svg>" />
+</head>
+<body>
+  <div id="app">
+    <!-- Floating decorative elements -->
+    <div class="floating-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <span class="logo-icon">✨</span>
+        <span class="logo-text">Glow</span>
+      </div>
+      <p class="tagline">Your beauty questions, answered with care</p>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="main">
+      <section class="hero" id="hero">
+        <h1 class="hero-title">
+          Hey gorgeous,<br />
+          <span class="highlight">what's on your mind?</span>
+        </h1>
+        <p class="hero-subtitle">
+          No more scrolling through endless tabs. Ask your beauty question and get a clear, honest answer — just for you.
+        </p>
+
+        <!-- Search -->
+        <div class="search-container">
+          <div class="search-box">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.35-4.35" />
+            </svg>
+            <input
+              type="text"
+              id="searchInput"
+              class="search-input"
+              placeholder="e.g. How do I reduce dark circles?"
+              autocomplete="off"
+            />
+            <button id="searchBtn" class="search-btn">
+              <span>Find my answer</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+
+          <!-- Popular Questions -->
+          <div class="popular-tags">
+            <span class="popular-label">Popular:</span>
+            <button class="tag" data-query="best anti-aging routine for my late 20s">Anti-aging in my 20s</button>
+            <button class="tag" data-query="how to get rid of acne scars">Acne scars</button>
+            <button class="tag" data-query="what is the best treatment for dark circles">Dark circles</button>
+            <button class="tag" data-query="how to get glowing skin">Glowing skin</button>
+            <button class="tag" data-query="is botox worth it in your early 30s">Botox in my 30s?</button>
+            <button class="tag" data-query="best lip filler advice">Lip fillers</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Results Section -->
+      <section class="results-section" id="results" style="display: none;">
+        <button class="back-btn" id="backBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+            <path d="M19 12H5M12 19l-7-7 7-7" />
+          </svg>
+          <span>Ask another question</span>
+        </button>
+
+        <div class="result-card" id="resultCard">
+          <!-- Dynamic content -->
+        </div>
+      </section>
+
+      <!-- Loading -->
+      <section class="loading-section" id="loading" style="display: none;">
+        <div class="loading-animation">
+          <div class="loading-dot"></div>
+          <div class="loading-dot"></div>
+          <div class="loading-dot"></div>
+        </div>
+        <p class="loading-text">Finding the best answer for you...</p>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>Made with 💕 — Glow is for informational purposes only. Always consult a dermatologist for personalized advice.</p>
+    </footer>
+  </div>
+
+  <script src="knowledge.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
